@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MealsFor.Me</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% if !!current_user %>
+          <a class="navbar-brand" href="<%= user_url(current_user) %>"/> My Profile</a>
+          <a class="navbar-brand" id="Menu" href="/foods"/>Menu</a>
+          <a class="navbar-brand" id="Log Out" href="<%= logout_url %>"/>Log Out</a>
+        <% else %>
+          <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_url %>"/>Log In</a>
+        <% end %>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+    <!-- content -->
+    <div class="container"  role="main">
+      <% if !flash.alert.nil? %>
+      <div class="center alert">
+        <%= flash.alert %>
+      </div>
+      <% end %>
+    </div>
+
+    <!-- yield -->
+    <div class="center">
+
+      <%= yield %>
+    </div>
+
+  </body>
+  <footer>
+    <div class="footer">
+    <% if !!current_user %>
+      <p>-- You are logged in as <%= current_user.email %> <%= current_user_role %> --</p>
+    <% else %>
+      <p>-- You are not logged in --</p>
+    <% end %>
+    <p>And the <a href="/mostmeals">winner</a> is... Thanks for visiting!</p>
+    </div>
+  </footer>
+</html>

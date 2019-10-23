@@ -1,0 +1,23 @@
+<%= form_for @food do |f| %>
+
+<div class="form-group">
+  <%= f.label :name, value= "Food Name:"%>
+  <%= f.text_field :name, placeholder: "Enter the food name, i.e. ceviche", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :picture, value= "Link for picture:" %>
+  <%= f.text_field :picture, placeholder: "Paste link, i.e. https://sample.com/food.jpg", class: "form-control"  %>
+</div>
+
+<div class="form-group">
+  <%= f.label :description, value= "Description: (1000 char max)" %>
+  <%= f.text_area :description, placeholder: "Enter a short description...", class: "form-control"  %>
+</div>
+
+<div class="actions">
+  <%= f.hidden_field :cook_id, :value => session[:user_id] %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+</div><br>
+
+<% end %>

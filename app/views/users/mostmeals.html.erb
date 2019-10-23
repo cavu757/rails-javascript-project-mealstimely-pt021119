@@ -1,0 +1,11 @@
+<h1>Eater w/Most Meals</h1>
+
+<div class="login-box">
+
+<img src="https://media.giphy.com/media/L0O3TQpp0WnSXmxV8p/giphy.gif" width=50% alt="">
+<% @mostmeals.each do |u| %>
+<h2>Winner: <%=u.name%></h2>
+<h2># of Meals: <%=u.meals.count%></h2>
+<%end%>
+
+</div>

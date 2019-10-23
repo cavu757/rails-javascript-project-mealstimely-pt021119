@@ -1,0 +1,30 @@
+<h1>Log In Page</h1>
+
+<div class="login-box">
+
+<%= form_for :user do |f| %>
+  <div class="form-group">
+    <%= f.label :name, value= "Your email:"%>
+    <%= f.email_field :email, placeholder: "Enter your e-mail", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, value= "Your password:" %>
+    <%= f.password_field :password, placeholder: "Hope you didn't forget...", class: "form-control"  %>
+  </div>
+
+  <div class="actions">
+  <%= f.submit "Sign In", class: "btn btn-primary" %>
+  </div><br>
+
+<% end %>
+
+<div class="form-group">
+  <p><strong>Or you can also:</strong></p>
+</div>
+
+  <form action="/auth/facebook">
+    <input class="btn btn-primary" type="submit" value="Log in with Facebook" />
+  </form>
+
+</div>

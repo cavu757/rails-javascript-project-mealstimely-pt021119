@@ -1,0 +1,51 @@
+
+<h1>New User Sign Up</h1>
+
+<div class="login-box">
+
+
+<%= form_for @user do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name , value="Name:" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.check_box :is_cook %>
+    <%= f.label :is_cook, "Check if you want to sign up as a cook", class: "check-box"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, value="E-mail address:" %>
+    <%= f.email_field :email, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, value= "Password:" %>
+    <%= f.password_field :password, placeholder: "Enter a good one", class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, value= "Confirm Password:" %>
+    <%= f.password_field :password_confirmation, placeholder: "Re-enter your awesome password", class: "form-control"  %>
+  </div>
+
+  <div class="actions">
+  <%= f.submit "Create User", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+<br>
+
+<div class="form-group">
+  <p><strong>Or you can also:</strong></p>
+</div>
+
+<div class="form-group">
+  <form action="/auth/facebook">
+    <input class="btn btn-primary" type="submit" value="Sign Up with Facebook" />
+  </form>
+</div>
+
+</div>
