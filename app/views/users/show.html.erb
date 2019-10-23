@@ -6,11 +6,15 @@
     <% end %>
     <h4><strong>Name:</strong> <%= @user.name %></h4>
     <h4><strong>E-mail:</strong> <%= @user.email %></h4>
-    <h4><strong>Rating:</strong> (future feature)</h4>
+    <h4><strong>Rating: &#9733; &#9733; &#9733; &#9733; &#9734;</strong>
+
+    </h4>
     <% if @user[:is_cook] %>
+
     <p><a href="/foods">Click here to add to your list or edit your list of food available</a></p>
     <% else %>
-    <p><a href="/foods">Click here to see list of food available this week</a></p>
+    <a class="btn btn-primary" href="/foods">Food available this week</a>
+    <button type="button" class="btn btn-success">Meals I have created</button>
     <% end %>
   </div><br>
 
