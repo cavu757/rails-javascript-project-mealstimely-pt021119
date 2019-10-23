@@ -2,6 +2,10 @@ class MealsController < ApplicationController
 
 def index
   @meals = Meal.order(created_at: :desc)
+  respond_to do |format|
+    format.html { render :index }
+    format.json { render json: @meals }
+  end
 end
 
 def create

@@ -19,6 +19,10 @@ class FoodsController < ApplicationController
   def index
     @foods = Food.all
     @meal = Meal.new
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @foods }
+    end
   end
 
   def show
