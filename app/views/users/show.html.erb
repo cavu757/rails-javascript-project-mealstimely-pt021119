@@ -11,14 +11,15 @@
     </h4>
     <% if @user[:is_cook] %>
 
-    <p><a href="/foods">Click here to add to your list or edit your list of food available</a></p>
+    <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">My Food Created</a>
+    <a class="btn btn-success" id="meals-i-have-created" href="#" role="button">My Meals Cooked</a>
     <% else %>
     <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">Food available this week</a>
-    <button type="button" class="btn btn-success" id="meals-i-have-created" role="button">Meals I have created</button>
+    <a class="btn btn-success" id="meals-i-have-created" href="#" role="button">Meals I have created</a>
     <% end %>
   </div><br>
 
-  <div class="login-box-left">
+  <div class="login-box-left" id="food-created">
     <% if @user[:is_cook] %>
       <h4>Food created:</h4>
       <% if @foods_cooked.count == 0 %>
@@ -41,7 +42,7 @@
   </div>
 
   <% if @user[:is_cook] %>
-  <div class="login-box-left">
+  <div class="login-box-left" id="meals-cooked">
       <h4>Meals cooked:</h4>
       <% if @meals_cooked.count == 0 %>
       <p><em>None</em></p>
