@@ -13,14 +13,14 @@
 
     <p><a href="/foods">Click here to add to your list or edit your list of food available</a></p>
     <% else %>
-    <a class="btn btn-primary" href="/foods">Food available this week</a>
-    <button type="button" class="btn btn-success">Meals I have created</button>
+    <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">Food available this week</a>
+    <button type="button" class="btn btn-success" id="meals-i-have-created" role="button">Meals I have created</button>
     <% end %>
   </div><br>
 
   <div class="login-box-left">
     <% if @user[:is_cook] %>
-      <h4>Food cooked:</h4>
+      <h4>Food created:</h4>
       <% if @foods_cooked.count == 0 %>
         <p><em>None</em></p>
       <%else%>
