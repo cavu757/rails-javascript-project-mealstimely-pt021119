@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     end
     @foods_cooked = Food.my_food(session[:user_id])
     @meals_cooked = Meal.my_meal(session[:user_id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @user, status: 200 }
+    end
   end
 
   def mostmeals
