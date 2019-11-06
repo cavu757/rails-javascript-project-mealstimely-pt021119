@@ -2,20 +2,26 @@
 
   <div class="login-box">
     <% if @user[:is_cook] %>
+
     <h3 align="center"><strong>COOK PROFILE</strong></h3>
     <% end %>
+
     <h4><strong>Name:</strong> <%= @user.name %></h4>
     <h4><strong>E-mail:</strong> <%= @user.email %></h4>
     <h4><strong>Rating: &#9733; &#9733; &#9733; &#9733; &#9734;</strong>
+
 
     </h4>
     <% if @user[:is_cook] %>
 
     <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">My Food Created</a>
     <a class="btn btn-success" id="meals-i-have-created" href="#" role="button">My Meals Cooked</a>
+
     <% else %>
+
     <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">Food available this week</a>
     <a class="btn btn-success" id="meals-i-have-created" href="#" role="button">Meals I have created</a>
+
     <% end %>
   </div><br>
 
