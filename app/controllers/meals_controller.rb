@@ -35,7 +35,7 @@ end
 private
 
 def meal_params
-  params.require(:meal).permit(:food_id, :user_id, :cook_id)
+  params.require(:meal).permit(:meal_name, :food_id, :user_id, :cook_id)
 end
 
 end
