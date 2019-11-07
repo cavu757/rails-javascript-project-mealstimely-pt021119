@@ -6,6 +6,14 @@ class UsersController < ApplicationController
   def new
   end
 
+  def index
+    @users = User.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @users }
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
