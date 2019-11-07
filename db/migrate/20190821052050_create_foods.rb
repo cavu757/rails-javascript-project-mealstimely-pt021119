@@ -5,6 +5,7 @@ class CreateFoods < ActiveRecord::Migration[5.2]
       t.string :picture
       t.text :description
       t.integer :food_rating
+      t.integer :cook_id
 
       t.timestamps
     end
