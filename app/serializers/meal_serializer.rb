@@ -1,3 +1,6 @@
 class MealSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :food_id, :cook_id
+  attributes :id, :meal_name
+  belongs_to :user
+  belongs_to :food
+  has_many :comments
 end
