@@ -27,6 +27,13 @@ User.create(
   is_cook: true
 )
 
+User.create(
+  name: "Josh Michael",
+  email: "user4@email.com",
+  password: "user4",
+  is_cook: false
+)
+
 Food.create(
 name: "ceviche",
 picture: "https://www.simplyrecipes.com/wp-content/uploads/2009/08/ceviche-vertical-a-1800.jpg",
@@ -86,17 +93,26 @@ cook_id: 3
 Meal.create(
   user_id: 2,
   food_id: 1,
+  meal_name: Food.find(1).name.titleize + ' Meal',
   cook_id: 1
 )
 
 Meal.create(
   user_id: 2,
   food_id: 2,
+  meal_name: Food.find(2).name.titleize + ' Meal',
   cook_id: 1
 )
 
 Meal.create(
-  user_id: 1,
+  user_id: 4,
   food_id: 3,
+  meal_name: Food.find(3).name.titleize + ' Meal',
   cook_id: 1
+)
+
+Comment.create(
+  meal_id: 1,
+  user_id: 2,
+  content: "This is a great meal, fit for a king"
 )
