@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
 def index
-  @meals = Meal.order(created_at: :desc)
+  @meals = Meal.where(user_id: session[:user_id])
   respond_to do |format|
     format.html { render :index }
     format.json { render json: @meals }
@@ -13,7 +13,7 @@ def create
   @food = Food.find(@meal[:food_id])
   @eater = User.find(@meal[:user_id])
   @cook = User.find(@food.cook_id)
-  redirect_to meal_path(@meal)
+  redirect_to user_meals_path
 end
 
 def show
@@ -30,7 +30,10 @@ def show
   end
 end
 
-
+def all_meals
+  @all_meals = Meal.order(created_at: :desc)
+  render json: @all_meals
+end
 
 private
 
