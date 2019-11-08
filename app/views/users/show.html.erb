@@ -15,36 +15,18 @@
     <% if @user[:is_cook] %>
 
     <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">My Food Created</a>
-    <a class="btn btn-success" id="meals-i-have-created" href="#" role="button">My Meals Cooked</a>
+    <a class="btn btn-success" id="meals-i-have-created" href="/meals" role="button">My Meals Cooked</a>
 
     <% else %>
 
     <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">Food available this week</a>
-    <a class="btn btn-success" id="meals-i-have-created" href="#" role="button">Meals I have created</a>
+    <a class="btn btn-success" id="meals-i-have-created" href="/users/<%=@user.id%>" role="button" data="<%=@user.id%>">Meals I have created</a>
 
     <% end %>
   </div><br>
 
-  <div class="login-box-left" id="food-created">
-    <% if @user[:is_cook] %>
-      <h4>Food created:</h4>
-      <% if @foods_cooked.count == 0 %>
-        <p><em>None</em></p>
-      <%else%>
-        <% @foods_cooked.each do |f| %>
-        <p><%=f.created_at.strftime("%A, %d %b %Y %l:%M %p")%>: <%= f.name.titleize %>. <em><%= link_to "Go to food", food_path(f)%></em></p>
-        <%end%>
-      <%end%>
-    <%else%>
-      <h4>Meals created:</h4>
-      <% if @user.meals.count == 0 %>
-        <p><em>None</em></p>
-      <%else%>
-        <% @user.meals.each do |m| %>
-        <p><%=m.created_at.strftime("%A, %d %b %Y %l:%M %p")%>: <%= m.food.name.titleize %> Meal. <em><%= link_to "Go to meal", meal_path(m)%></em></p>
-        <% end %>
-      <%end%>
-    <% end %>
+  <div id="food-created">
+
   </div>
 
   <% if @user[:is_cook] %>
