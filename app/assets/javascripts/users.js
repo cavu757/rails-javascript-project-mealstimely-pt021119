@@ -28,19 +28,3 @@ function getUserMeals(json){
   });
 
 }
-
-// var myButton = document.getElementById('my-button-id');
-// var someObject = {aProperty: 'Data'};
-//
-// myButton.addEventListener('click', function() {
-//   console.log(someObject.aProperty);  // Expected Value: 'Data'
-//
-//   someObject.aProperty = 'Data Again';  // Change the value
-// });
-//
-// window.setInterval(function() {
-//   if (someObject.aProperty === 'Data Again') {
-//     console.log('Data Again: True');
-//     someObject.aProperty = 'Data';  // Reset value to wait for next event execution
-//   }
-// }, 5000);
