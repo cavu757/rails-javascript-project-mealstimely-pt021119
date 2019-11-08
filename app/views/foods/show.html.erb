@@ -6,9 +6,9 @@
 </div>
 <%else%>
 <div class="login-box">
-  <%= form_for :meal, url: '/meals' do |f| %>
+  <%= form_for :meal, url: user_meals_path(session[:user_id]) do |f| %>
   <%= f.hidden_field :food_id, :value => @food.id %>
-  <%= f.hidden_field :meal_name :value => @food.name + ' Meal' %>
+  <%= f.hidden_field :meal_name, :value => @food.name.titleize + ' Meal' %>
   <%= f.hidden_field :cook_id, :value => @food.cook_id %>
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
   <%= f.submit "Create Meal", class: "btn btn-primary" %>
