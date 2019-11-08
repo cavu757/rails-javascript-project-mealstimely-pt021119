@@ -9,13 +9,19 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create'
 
   resources :foods
-  resources :users
 
-  resources :meals do
+  resources :users do
+    resources :meals
+  end
+
+  resources :meals, only: [:show] do
     resources :comments, only: [:index, :new, :show]
   end
+
   resources :comments, only: [:index, :new, :create, :show]
 
   get '/mostmeals', to: 'users#mostmeals'
+
+  get '/meals', to: 'meals#all_meals'
 
 end
