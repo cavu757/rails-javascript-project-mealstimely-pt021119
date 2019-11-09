@@ -32,9 +32,12 @@ class FoodsController < ApplicationController
       if current_user_is_cook && session[:user_id] != @food[:cook_id]
         redirect_to foods_path
       end
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @food }
+      end
     else
-      flash.alert = "Food does not exist"
-      redirect_to foods_path
+      redirect_to foods_path, alert: "Food does not exist"
     end
   end
 
