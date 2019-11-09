@@ -6,7 +6,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    redirect_to meal_path(comment_params[:meal_id])
+    render json: @comment
+  end
+
+  def index
+    if params[:meal_id]
+      @meal_comments = Comment.where(meal_id: params[:meal_id])
+      render json: @meal_comments
+    end
   end
 
   private
