@@ -27,7 +27,12 @@ function getUserMeals(json){
   meals.forEach(function(meal){
 
     $('#food-created').append(
-    '<div class="index-box">' + '<h5>' + meal.created_at + '</h5><h3>' + meal.meal_name + '</h3>' + '<a href="' + meal.user.id + '/meals/' + meal.id + '"><img src="' + meal.food.picture + '" width="75%"></a>' + '<h5>Cooked by: ' + meal.food.cook.name  + '</h5></div>');
+    '<div class="index-box">' +
+    '<h5>' + meal.created_at + '</h5><h3>' +
+    meal.meal_name + '</h3>' +
+    '<a href="' + meal.user.id + '/meals/' + meal.id + '"><img src="' + meal.food.picture + '" width="75%"></a>' +
+    '<h5>Cooked by: ' + meal.food.cook.name  +
+    '</h5><h6>Total Comments: <strong>' + meal.comments.length + '</strong></h6></div>');
   });
 
 }
