@@ -29,17 +29,4 @@
 
   </div>
 
-  <% if @user[:is_cook] %>
-  <div class="login-box-left" id="meals-cooked">
-      <h4>Meals cooked:</h4>
-      <% if @meals_cooked.count == 0 %>
-      <p><em>None</em></p>
-      <%else%>
-        <% @meals_cooked.each do |m| %>
-        <p><%=m.created_at.strftime("%A, %d %b %Y %l:%M %p")%>: <%= m.food.name.titleize %> Meal. <em><%= link_to "Go to meal", meal_path(m)%></em></p>
-        <% end %>
-      <%end%>
-  </div>
-  <% end %>
-
 </div>
