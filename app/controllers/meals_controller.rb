@@ -1,10 +1,18 @@
 class MealsController < ApplicationController
 
 def index
-  @meals = Meal.where(user_id: session[:user_id])
-  respond_to do |format|
-    format.html { render :index }
-    format.json { render json: @meals }
+  if current_user_not_cook
+    @meals = Meal.where(user_id: session[:user_id])
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @meals }
+    end
+  else
+    @meals = Meal.where(cook_id: session[:user_id])
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @meals }
+    end
   end
 end
 
@@ -24,9 +32,12 @@ def show
     @cook = User.find(@food.cook_id)
     @comment = Comment.new
     @meal_comments = @meal.comments
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @meal }
+    end
   else
-    flash.alert = "Meal does not exist."
-    redirect_to root_path
+    redirect_to root_path, alert: 'Meal does not exist'
   end
 end
 
