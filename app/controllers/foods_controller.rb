@@ -17,7 +17,11 @@ class FoodsController < ApplicationController
   end
 
   def index
-    @foods = Food.all
+    if current_user_is_cook
+      @foods = Food.where(cook_id: session[:user_id])
+    else
+      @foods = Food.all
+    end
     @meal = Meal.new
     respond_to do |format|
       format.html { render :index }
@@ -26,12 +30,13 @@ class FoodsController < ApplicationController
   end
 
   def show
+
     if Food.where(id: params[:id]).exists?
       @food = Food.find(params[:id])
-      @meal = Meal.new
       if current_user_is_cook && session[:user_id] != @food[:cook_id]
-        redirect_to foods_path
+        redirect_to foods_path and return
       end
+      @meal = Meal.new
       respond_to do |format|
         format.html { render :show }
         format.json { render json: @food }
@@ -58,6 +63,12 @@ class FoodsController < ApplicationController
 
   def destroy
     not_cook
+  end
+
+  def next_food
+    @food = Food.find(params[:id])
+    @next_food = Food.find(@food.id + 1)
+    render json: @next_food, include: ['name', 'picture', 'cook']
   end
 
   private
