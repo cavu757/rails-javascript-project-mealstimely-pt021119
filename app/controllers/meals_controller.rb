@@ -25,7 +25,7 @@ def create
 end
 
 def show
-  
+
   if Meal.where(id: params[:id]).exists?
     @meal = Meal.find(params[:id])
     @food = Food.find(@meal[:food_id])
@@ -43,8 +43,11 @@ def show
 end
 
 def all_meals
-  @all_meals = Meal.order(created_at: :desc)
-  render json: @all_meals
+  @meals = Meal.order(created_at: :desc)
+  respond_to do |format|
+    format.html { render :index }
+    format.json { render json: @meals }
+  end
 end
 
 private

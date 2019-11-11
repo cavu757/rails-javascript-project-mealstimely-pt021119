@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get '/mostmeals', to: 'users#mostmeals'
 
-  get '/meals', to: 'meals#all_meals'
+  get '/all_meals', to: 'meals#all_meals'
 
   get '/foods/:id/next', to: 'foods#next_food'
 
