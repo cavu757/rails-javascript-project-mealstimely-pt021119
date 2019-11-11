@@ -27,9 +27,7 @@ function addComment(attributes){
   attributes.done(function(data){
     let comment = new Comment(data);
     $("#print_comments").show()
-    // $('#commentName').text(comment["user"].name);
-    // $('#commentBody').text(comment["content"]);
-    // $('#commentTime').text(comment["created_at"]);
+
 
     comment.addCommentPrototype()
   });
@@ -53,4 +51,5 @@ Comment.prototype.addCommentPrototype = function(){
 
   let html = '<p>On ' + this.time + ', ' + this.user + ' said: "' + this.content + '"</p>'
   $("#print_comments").prepend(html)
+  $("#no_meal_comments").replaceWith('')
 }
