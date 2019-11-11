@@ -70,7 +70,7 @@ cook_id: 1
 )
 
 Food.create(
-name: "bacon2",
+name: "better bacon",
 picture: "https://cached.dakinfarm.com/RS/SR/Product/88/860_R_1ba464e5.jpg",
 description: "Heat a cast-iron or other heavy skillet over medium heat. When hot, add bacon strips in a single layer. Flip bacon, using tongs, and cook until browned on both sides, about 2 minutes. Drain and reserve fat for another use, and repeat with remaining bacon. Drain bacon on paper towels.",
 cook_id: 3
