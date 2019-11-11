@@ -56,11 +56,12 @@
   <footer>
     <div class="footer">
     <% if !!current_user %>
-      <p>-- You are logged in as <%= current_user.email %> <%= current_user_role %> --</p>
+      <p>-- You are logged in as <%= current_user.email %> <%= current_user_role %> --
     <% else %>
-      <p>-- You are not logged in --</p>
+      <p>-- You are not logged in --
     <% end %>
-    <p>And the <a href="/mostmeals">winner</a> is... Thanks for visiting!</p>
+    <a href="/all_meals">Click Here for the List of All Meals</a></p>
+    <p><a href="/mostmeals">-- Thanks for visiting! --</p>
     </div>
   </footer>
 </html>
