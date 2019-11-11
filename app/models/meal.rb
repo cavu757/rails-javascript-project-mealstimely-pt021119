@@ -5,6 +5,4 @@ class Meal < ApplicationRecord
 
   scope :my_meal, -> (cook_id){where(cook_id: cook_id)}
 
-
-
 end
