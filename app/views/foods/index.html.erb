@@ -1,33 +1,34 @@
 
 <% if current_user_is_cook %>
   <div class="">
-    <h2><em>Hello <%= current_user.name %>, to add a new food, <strong><a href="/foods/new">click here.</a></strong>
-    </em></h2>
+    <h3><em>Hello <%= current_user.name %>, click on your food to Edit or <strong><a href="foods/new" class="btn btn-primary active" role="button">Add New Food</a></strong>
+    </em></h3>
   </div>
   <% @foods.each do |food| %>
     <% if session[:user_id] == food[:cook_id] %>
       <div class="index-box">
       <p> Name: <%=link_to food.name.titleize, food_url(food) %></p>
-      <p><img src="<%=food.picture%>" alt="" width=75% ></p>
-      <p> Description: <%= food.description.truncate(100) %>
+      <p><a href="/foods/<%=food.id%>"><img src="<%=food.picture%>" alt="" width=75% ></a></p>
+      <p id="food_description"> <strong> Description: </strong> <%= food.description.truncate(100) %>
       <em><%= link_to "see more", food_url(food) unless food.description.size<99 %></em></p>
       <p> <em> Food Rating: &#9733; &#9733; &#9733; &#9733; &#9734;<%= food.food_rating %> </em></p>
-      <p> <%= link_to "Go to Food Page to Edit", food_url(food) %> </p>
+
       </div>
     <%end%>
   <%end%>
 <% else %>
   <div class="">
     <h2><em>Today's Menu</em></h2>
+    <h4>(Click on each food to see more or to create a Meal)</h4>
   </div>
   <% @foods.each do |food| %>
     <div class="index-box">
     <p> Name: <%=link_to food.name.titleize, food_url(food) %></p>
-    <p><img src="<%=food.picture%>" alt="" width=75% ></p>
-    <p> Description: <%= food.description.truncate(100) %>
+    <p><a href="<%=food_url(food)%>"><img src="<%=food.picture%>" alt="" width=75% ></a></p>
+    <p id="food_description"> <strong> Description: </strong> <%= food.description.truncate(100) %>
     <em><%= link_to "see more", food_url(food) unless food.description.size<99 %></em></p>
     <p> <em> Food Rating: &#9733; &#9733; &#9733; &#9733; &#9734;<%= food.food_rating %> </em></p>
-    <p><a href="<%=food_url(food)%>">Go to food page to add to meal</a></p>
+
     </div>
   <%end%>
 <%end%>
