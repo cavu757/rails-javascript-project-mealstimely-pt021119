@@ -7,28 +7,28 @@
 #   Character.create(Food.create(name: 'Luke', movie: movies.first)
 
 User.create(
-  name: "John Smith",
+  name: "Monica Gellar",
   email: "cook1@email.com",
   password: "cook1",
   is_cook: true
 )
 
 User.create(
-  name: "Josh Smith",
+  name: "Joey Tribiani",
   email: "user2@email.com",
   password: "user2",
   is_cook: false
 )
 
 User.create(
-  name: "Josh Michael",
+  name: "Sasha Turner",
   email: "cook3@email.com",
   password: "cook3",
   is_cook: true
 )
 
 User.create(
-  name: "Josh Michael",
+  name: "Michael Hasselhoff",
   email: "user4@email.com",
   password: "user4",
   is_cook: false
