@@ -1,4 +1,5 @@
-<h1><%= @food.name.titleize %></h1>
+
+<h1><a href="<%=@food.id-1%>" class="btn btn-default active" role="button">Previous</a> <%= @food.name.titleize %> <a href="<%=@food.id+1%>" class="btn btn-default active" role="button">Next</a></h1>
 
 <%if current_user_is_cook%>
 <div class="login-box">
@@ -6,6 +7,7 @@
 </div>
 <%else%>
 <div class="login-box">
+
   <%= form_for :meal, url: user_meals_path(session[:user_id]) do |f| %>
   <%= f.hidden_field :food_id, :value => @food.id %>
   <%= f.hidden_field :meal_name, :value => @food.name.titleize + ' Meal' %>
@@ -13,14 +15,17 @@
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
   <%= f.submit "Create Meal", class: "btn btn-primary" %>
   <%end%>
+
 </div>
 <%end%>
 
+
 <div class="login-box">
 
-<p><img src="<%=@food.picture%>" alt="" width=50%></p>
-<p> Description: <%= @food.description %></p>
-<p> Food Rating: &#9733; &#9733; &#9733; &#9733; &#9734;<%= @food.food_rating %></p>
+<p>
+<img src="<%=@food.picture%>" alt="" width=50%></p>
+<p id="food_description"> <%= @food.description %></p>
+<p> <strong> Food Rating: </strong> &#9733; &#9733; &#9733; &#9733; &#9734;<%= @food.food_rating %></p>
 
 </div>
 
