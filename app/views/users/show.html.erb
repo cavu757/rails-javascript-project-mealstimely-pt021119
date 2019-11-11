@@ -14,12 +14,12 @@
     </h4>
     <% if @user[:is_cook] %>
 
-    <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">My Food Created</a>
+    <!-- <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">My Food Created</a> -->
     <a class="btn btn-success" id="meals-i-have-created" href="/meals" role="button">My Meals Cooked</a>
 
     <% else %>
 
-    <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">Food available this week</a>
+    <a class="btn btn-primary" id="food-available-this-week" href="/foods" role="button">Pick a Random Food</a>
     <a class="btn btn-success" id="meals-i-have-created" href="/users/<%=@user.id%>" role="button" data="<%=@user.id%>">Meals I have created</a>
 
     <% end %>
