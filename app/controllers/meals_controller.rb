@@ -21,14 +21,15 @@ def create
   @food = Food.find(@meal[:food_id])
   @eater = User.find(@meal[:user_id])
   @cook = User.find(@food.cook_id)
-  redirect_to user_meals_path
+  redirect_to user_meal_path(@eater, @meal)
 end
 
 def show
+  
   if Meal.where(id: params[:id]).exists?
     @meal = Meal.find(params[:id])
     @food = Food.find(@meal[:food_id])
-    @eater = User.find(session[:user_id])
+    @eater = User.find(@meal[:user_id])
     @cook = User.find(@food.cook_id)
     @comment = Comment.new
     @meal_comments = @meal.comments
