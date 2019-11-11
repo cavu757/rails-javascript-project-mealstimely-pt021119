@@ -3,7 +3,9 @@
 $(document).on('turbolinks:load', function(){
   listenMealsIHaveCreatedButtonClick();
   listenCommentButtonClick();
-
+  listenNextFoodClick();
+  listenPreviousFoodClick();
+  listenFoodAvailableThisWeek();
 });
 
 
@@ -30,9 +32,25 @@ function getUserMeals(json){
     '<div class="index-box">' +
     '<h5>' + meal.created_at + '</h5><h3>' +
     meal.meal_name + '</h3>' +
-    '<a href="' + meal.user.id + '/meals/' + meal.id + '"><img src="' + meal.food.picture + '" width="75%"></a>' +
+    '<a href="/meals/' + meal.id + '"><img src="' + meal.food.picture + '" width="75%"></a>' +
     '<h5>Cooked by: ' + meal.food.cook.name  +
     '</h5><h6>Total Comments: <strong>' + meal.comments.length + '</strong></h6></div>');
   });
+
+}
+
+function listenFoodAvailableThisWeek(){
+  $('#food-available-this-week').on('click', function(event) {
+    event.preventDefault();
+    clearFoodCreatedBox();
+    showFood();
+  });
+}
+
+function clearFoodCreatedBox(){
+  $("#food-created").empty();
+}
+
+function showFood(){
 
 }
