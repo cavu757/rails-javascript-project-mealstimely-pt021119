@@ -49,8 +49,19 @@ function listenFoodAvailableThisWeek(){
 
 function clearFoodCreatedBox(){
   $("#food-created").empty();
+
 }
 
 function showFood(){
-
+  $.get('/foods.json', function(json){
+    let idFood = Math.ceil(Math.random() * json.length);
+    $.get('/foods/'+idFood+'.json', function(food){
+    $('#food-created').append(
+    '<div class="index-box">' +
+    '<h2>' + food.name + '</h2><h4>by ' +
+    food.cook.name + '</h4>' +
+    '<a href="/foods/' + food.id + '"><img src="' + food.picture + '" width="75%"></a>' +
+    '<h5>Click on Food for More Info and to Create a Meal</h5></div>');
+  })
+})
 }
