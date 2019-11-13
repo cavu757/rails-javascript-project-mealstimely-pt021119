@@ -38,18 +38,20 @@ function clearCommentBox(){
 }
 
 
-function Comment(attr){
-  this.id = attr.id;
-  this.user = attr.user.name;
-  this.content = attr.content;
-  this.time = attr.created_at;
-  this.meal_id = attr.meal.id;
+class Comment{
+  constructor(attr){
+    this.id = attr.id;
+    this.user = attr.user.name;
+    this.content = attr.content;
+    this.time = attr.created_at;
+    this.meal_id = attr.meal.id;
+  }
 
-}
+  addCommentPrototype(){
 
-Comment.prototype.addCommentPrototype = function(){
+    let html = '<p>On ' + this.time + ', ' + this.user + ' said: "' + this.content + '"</p>'
+    $("#print_comments").prepend(html)
+    $("#no_meal_comments").replaceWith('')
+  }
 
-  let html = '<p>On ' + this.time + ', ' + this.user + ' said: "' + this.content + '"</p>'
-  $("#print_comments").prepend(html)
-  $("#no_meal_comments").replaceWith('')
 }
